@@ -35,8 +35,11 @@ dependencies = [
   "pandas>=3.1",
 ]
 
+[project.scripts]
+test-generate-keihanbus-timetable = "_funcs:load_timetable"
+
 [project.urls]
-Documentation = "https://github.com/Tayra-Sakurai/keihanbus-timetable-generator#readme"
+Documentation = "https://tayra-sakurai.github.io/keihanbus-timetable-generator"
 Issues = "https://github.com/Tayra-Sakurai/keihanbus-timetable-generator/issues"
 Source = "https://github.com/Tayra-Sakurai/keihanbus-timetable-generator"
 
