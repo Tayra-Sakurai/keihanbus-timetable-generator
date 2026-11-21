@@ -1,0 +1,82 @@
+[build-system]
+requires = ["hatchling>=1.31"]
+build-backend = "hatchling.build"
+
+[project]
+name = "keihanbus-timetable-generator"
+dynamic = ["version"]
+description = 'Time table generator module for the Keihan Bus website.'
+readme = "README.md"
+requires-python = ">=3.12"
+license = "AGPL-3.0-or-later"
+keywords = [
+  "timetable",
+  "bus",
+  "automation",
+]
+authors = [
+  { name = "Tayra Sakurai", email = "tayra_sakurai@icloud.com" },
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Natural Language :: English",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Topic :: Home Automation",
+]
+dependencies = [
+  "selenium>=4.53",
+  "pandas>=3.1",
+]
+
+[project.urls]
+Documentation = "https://github.com/Tayra-Sakurai/keihanbus-timetable-generator#readme"
+Issues = "https://github.com/Tayra-Sakurai/keihanbus-timetable-generator/issues"
+Source = "https://github.com/Tayra-Sakurai/keihanbus-timetable-generator"
+
+[tool.hatch.version]
+path = "src/keihanbus_timetable_generator/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/keihanbus_timetable_generator tests}"
+
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.15", "3.14", "3.13", "3.12"]
+
+[tool.coverage.run]
+source_pkgs = ["keihanbus_timetable_generator", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/keihanbus_timetable_generator/__about__.py",
+]
+
+[tool.coverage.paths]
+keihanbus_timetable_generator = ["src/keihanbus_timetable_generator", "*/keihanbus-timetable-generator/src/keihanbus_timetable_generator"]
+tests = ["tests", "*/keihanbus-timetable-generator/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[dependency-groups]
+dev = [
+  "hatch>=1.18.2",
+  "Sphinx>=9.1",
+  "pydata-sphinx-theme>=0.24",
+  "numpydoc>=1.11",
+  "pytest>=9.2.0",
+]

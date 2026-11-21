@@ -1,0 +1,40 @@
+# Configuration file for the Sphinx documentation builder.
+#
+# For the full list of built-in configuration values, see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
+
+# -- Project information -----------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+
+project = 'keihanbus-timetable-generator'
+copyright = '2026, Tayra Sakurai'
+author = 'Tayra Sakurai'
+release = '0.0.1'
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path('..', '..', 'src', 'keihanbus_timetable_generator').resolve()))
+
+# -- General configuration ---------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+extensions = [
+    'sphinx.ext.autodoc',
+    'sphinx.ext.apidoc',
+    'sphinx.ext.autosummary',
+    'numpydoc',
+    'sphinx.ext.githubpages',
+    'sphinx.ext.viewcode',
+]
+
+templates_path = ['_templates']
+exclude_patterns = []
+
+
+
+# -- Options for HTML output -------------------------------------------------
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+
+html_theme = 'pydata_sphinx_theme'
+html_static_path = ['_static']
